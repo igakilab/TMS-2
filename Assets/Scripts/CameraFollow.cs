@@ -12,11 +12,17 @@ public class CameraFollow : MonoBehaviour
     {
         offset = transform.position - player.position;
         StartPos = transform.position;
+        Time.timeScale = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Time.timeScale == 0){
+            if(Input.GetKeyDown(KeyCode.DownArrow)){
+                Time.timeScale = 1;
+            }
+        }
         Vector3 targetPos = player.position + offset;
         targetPos.x = StartPos.x;
         targetPos.y = StartPos.y;

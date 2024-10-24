@@ -7,6 +7,8 @@ public class GroundTile : MonoBehaviour
 {
     GroundSpawner groundSpawner;
     public GameObject wallPrefab;
+    public int walldistance = 3;
+
     private void Start()
     {
         groundSpawner = GameObject.FindObjectOfType<GroundSpawner>();
@@ -27,7 +29,8 @@ public class GroundTile : MonoBehaviour
     {
         int wallSpawnIndex = Random.Range(2,5);
         Transform spawnPoint = transform.GetChild(wallSpawnIndex).transform;
-
-        Instantiate(wallPrefab, spawnPoint.position,Quaternion.identity,transform);
+        if(GroundSpawner.tileIndex % walldistance == 0){
+            Instantiate(wallPrefab, spawnPoint.position,Quaternion.identity,transform);
+        }
     }
 }

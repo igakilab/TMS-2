@@ -5,7 +5,7 @@ using UnityEngine;
 public class GroundSpawner : MonoBehaviour
 {
     public GameObject groundTile;
-    [System.NonSerialized] public int tileIndex = 0;  
+    public static int tileIndex = 0;  
     Vector3 nextSpawnPoint;
     public void SpawnTile()
     {   
@@ -15,6 +15,7 @@ public class GroundSpawner : MonoBehaviour
     }
     private void Start()
     {
+        nextSpawnPoint = groundTile.transform.position;
         for(int i = 0; i < 10;i++){
             SpawnTile();
         }
