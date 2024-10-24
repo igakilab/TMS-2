@@ -4,17 +4,18 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    // Start is called before the first frame update
     public float speed = 5;
     private Rigidbody rb;
     private Vector3 right = new Vector3(3.3f,0,0);
-    private Vector3 left = new Vector3(-3.3f,0,0);  
+    private Vector3 left = new Vector3(-3.3f,0,0);
+    public static bool alive = true;
     void FixedUpdate(){
+        if(!alive) return;
+
         rb =this.GetComponent<Rigidbody>();
         Vector3 forwardMove = transform.forward * speed * Time.fixedDeltaTime;
         rb.MovePosition(rb.position + forwardMove);
     }
-    // Update is called once per frame
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.LeftArrow)){
@@ -28,6 +29,13 @@ public class PlayerMovement : MonoBehaviour
             }
             rb.MovePosition(rb.position + right);
         }
+        Debug.Log(alive);
+    }
+
+    public void Die()
+    {
+        alive = false;
+        // ゲームを終わらせる　シーン変更はMediaPipeがだめになるので、カメラ移動でシーン変更を再現
 
     }
 }
