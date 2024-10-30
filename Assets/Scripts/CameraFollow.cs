@@ -7,15 +7,21 @@ public class CameraFollow : MonoBehaviour
     public Transform player;
     Vector3 offset;
     Vector3 StartPos;
-    // Start is called before the first frame update
+    PlayerMovement playerMovement;
     void Start()
     {
+        playerMovement = GameObject.FindObjectOfType<PlayerMovement>();
         offset = transform.position - player.position;
         StartPos = transform.position;
         Time.timeScale = 0;
     }
 
-    // Update is called once per frame
+    public void GameOverScene()
+    {
+        transform.position = StartPos;
+        transform.rotation = Quaternion.Euler(0,180,0);
+    }
+
     void Update()
     {
         if (Time.timeScale == 0){
@@ -23,9 +29,11 @@ public class CameraFollow : MonoBehaviour
                 Time.timeScale = 1;
             }
         }
-        Vector3 targetPos = player.position + offset;
-        targetPos.x = StartPos.x;
-        targetPos.y = StartPos.y;
-        transform.position = targetPos;
+        if(PlayerMovement.Alive){
+            Vector3 targetPos = player.position + offset;
+            targetPos.x = StartPos.x;
+            targetPos.y = StartPos.y;
+            transform.position = targetPos;
+        }
     }
 }

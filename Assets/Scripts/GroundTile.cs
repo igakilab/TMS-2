@@ -15,16 +15,19 @@ public class GroundTile : MonoBehaviour
         SpawnWall();
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        groundSpawner.SpawnTile();
-        Destroy(gameObject,2);
+    private void OnTriggerExit(Collider collision)
+    {   
+        if(collision.gameObject.name == "Player"){
+            groundSpawner.SpawnTile();
+            Destroy(gameObject,2);
+        }
     }
+
     private void Update()
     {
         
     }
-
+    
     void SpawnWall()
     {
         int wallSpawnIndex = Random.Range(2,5);
