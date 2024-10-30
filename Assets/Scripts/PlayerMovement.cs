@@ -1,60 +1,78 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class PlayerMovement : MonoBehaviour
-{
-    public float speed = 5;
-    public int DebugPlay =1;
+{   
+    public GameObject BreakingBallPrefab;
+    public static Boolean Alive = true;
+    public Boolean DebugPlay = true;
+    public float speed = 15;
+
     public UDPReceive udpReceive;
     public GameObject Player;
-    private Rigidbody rb;
-    private Vector3 right = new Vector3(3.3f,0,0);
-    private Vector3 left = new Vector3(-3.3f,0,0);
-    private Vector3 mid = new Vector3(0, 0, 0);
+    CameraFollow cameraFollow;
+    Rigidbody rb;
+
+    private float rightx = 3.3f;
+    private float leftx = -3.3f;
+    private float midx = 0.0f;
+    private Vector3 BallSpawnPoint = new (0,0,1.5f);//Playerの位置にSpawnさせるとバグの原因になるので少し前方に
+    void Start(){
+        cameraFollow = FindObjectOfType<CameraFollow>();
+        rb = GetComponent<Rigidbody>();
+    }
+
     void FixedUpdate(){
-        rb =this.GetComponent<Rigidbody>();
+        if (!Alive) return;
         Vector3 forwardMove = transform.forward * speed * Time.fixedDeltaTime;
         rb.MovePosition(rb.position + forwardMove);
     }
     void Update()
     {
         string data = udpReceive.data;
-        if(DebugPlay == 1){
-            Debug.Log(data);
+        if(DebugPlay){
+            
             if(Input.GetKeyDown(KeyCode.LeftArrow)){
-                if(this.transform.position.x < 0 ) {
-                    return;
-                }
-                rb.MovePosition(rb.position + left);
+                MovePlayer(leftx);
             }else if(Input.GetKeyDown(KeyCode.RightArrow)){
-                if(this.transform.position.x > 0 ) {
-                    return;
-                }
-                rb.MovePosition(rb.position + right);
+                MovePlayer(rightx);
+            }else if(Input.GetKeyDown(KeyCode.UpArrow)){
+                MovePlayer(midx);
+            }
+            if(Input.GetKeyDown(KeyCode.Space)){
+                Instantiate(BreakingBallPrefab,BallSpawnPoint + transform.position, Quaternion.identity);
             }
         }else{
             if (data ==  "left"){
-                if(this.transform.position.x < 0 ) {
-                    return;
-                }
-                transform.position = new Vector3(-3.3f, transform.position.y, transform.position.z);
+                MovePlayer(leftx);
             }else if(data == "right"){
-                if(this.transform.position.x > 0 ) {
-                    return;
-                }
-                transform.position = new Vector3(3.3f, transform.position.y, transform.position.z);
+                MovePlayer(rightx);
             }
             else if(data == "middle"){
-                if (this.transform.position.x == 0)
-                {
-                    return;
-                }
-                transform.position = new Vector3(0, transform.position.y, transform.position.z);
+                MovePlayer(midx);
             }
         }
+    }
 
+    void MovePlayer(float targetX)
+    {
+        if (transform.position.x != targetX)
+        {
+            rb.MovePosition(new Vector3(targetX, transform.position.y, transform.position.z));
+        }
+    }
 
+    void GameOver(){
+        cameraFollow.GameOverScene();
+    }
+
+    public void Die(){
+        Alive = false;
+        Debug.Log(Alive);
+        
+        Invoke("GameOver",2);
     }
 }
