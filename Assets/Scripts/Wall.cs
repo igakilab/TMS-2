@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class Wall : MonoBehaviour
 {
-    PlayerMovement playerMovement;
-    // Start is called before the first frame update
+    protected PlayerMovement playerMovement;
     void Start()
     {
         playerMovement = GameObject.FindObjectOfType<PlayerMovement>();
     }
 
-    private void OnCollisionEnter(Collision collision) {
+    protected virtual void OnCollisionEnter(Collision collision) {
         if(collision.gameObject.name == "Player"){
             playerMovement.Die();
         }

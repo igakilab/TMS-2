@@ -7,7 +7,9 @@ public class GroundTile : MonoBehaviour
 {
     GroundSpawner groundSpawner;
     public GameObject wallPrefab;
+    public GameObject BwallPrefab;
     public int walldistance = 3;
+    private List<int> wallSPointList = new List<int> {2,3,4};
 
     private void Start()
     {
@@ -29,11 +31,24 @@ public class GroundTile : MonoBehaviour
     }
     
     void SpawnWall()
-    {
-        int wallSpawnIndex = Random.Range(2,5);
-        Transform spawnPoint = transform.GetChild(wallSpawnIndex).transform;
-        if(GroundSpawner.tileIndex % walldistance == 0){
-            Instantiate(wallPrefab, spawnPoint.position,Quaternion.identity,transform);
+    {   
+        if(GroundSpawner.tileIndex % walldistance != 0)return;
+
+        int bWallSpawnIndex = wallSPointList[Random.Range(0,wallSPointList.Count)];
+
+        foreach (int index in wallSPointList)
+        {
+            Transform spawnPoint = transform.GetChild(index).transform;
+            if (index == bWallSpawnIndex)
+            {
+                // 壊れる壁をスポーン
+                Instantiate(BwallPrefab, spawnPoint.position,Quaternion.identity,transform);
+            }
+            else
+            {
+                // 壊れない壁をスポーン
+                Instantiate(wallPrefab, spawnPoint.position,Quaternion.identity,transform);
+            }
         }
     }
 }
