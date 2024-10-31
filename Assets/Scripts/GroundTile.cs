@@ -8,8 +8,9 @@ public class GroundTile : MonoBehaviour
     GroundSpawner groundSpawner;
     public GameObject wallPrefab;
     public GameObject BwallPrefab;
-    public int walldistance = 3;
+    public int walldistance = 4;
     private List<int> wallSPointList = new List<int> {2,3,4};
+    public int score = 3;
 
     private void Start()
     {
@@ -32,7 +33,7 @@ public class GroundTile : MonoBehaviour
     
     void SpawnWall()
     {   
-        if(GroundSpawner.tileIndex % walldistance != 0)return;
+        if(GroundSpawner.tileIndex % walldistance != 0 )return;
 
         int bWallSpawnIndex = wallSPointList[Random.Range(0,wallSPointList.Count)];
 

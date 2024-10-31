@@ -12,9 +12,7 @@ public class BreakingBall : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision collision) {
-        if (collision.gameObject.name == "Wall(Clone)"){
-            Destroy(gameObject);
-        }
+        Destroy(gameObject);
     }
 
     private void FixedUpdate() {

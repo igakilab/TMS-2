@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Wall : MonoBehaviour
-{
+{   
+    protected int score = 0;
     protected PlayerMovement playerMovement;
     void Start()
     {
