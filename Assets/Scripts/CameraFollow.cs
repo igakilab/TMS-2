@@ -22,6 +22,12 @@ public class CameraFollow : MonoBehaviour
         transform.rotation = Quaternion.Euler(0,180,0);
     }
 
+    public void GameClear()
+    {
+        Vector3 ClearPos = StartPos + new Vector3(0,0,-20);
+        transform.rotation = Quaternion.Euler(0,180,0);
+    }
+
     void Update()
     {
         if (Time.timeScale == 0){
