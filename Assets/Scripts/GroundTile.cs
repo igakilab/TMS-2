@@ -8,9 +8,9 @@ public class GroundTile : MonoBehaviour
     GroundSpawner groundSpawner;
     public GameObject wallPrefab;
     public GameObject BwallPrefab;
-    public int walldistance = 4;
+    public int wallHarddistance = 6;//破壊可能壁と壊れない壁が同時に出てくるポイントの間隔
+    public int wallrandomdistance = 2;//破壊可能壁と壊れない壁のどちらか１つがランダムに湧く間隔　
     private List<int> wallSPointList = new List<int> {2,3,4};
-    public int score = 3;
 
     private void Start()
     {
@@ -26,6 +26,11 @@ public class GroundTile : MonoBehaviour
         }
     }
 
+    public bool GetRandomBoolean()
+    {
+        return Random.value > 0.5f; // 0.5より大きければtrue、そうでなければfalse
+    }
+
     private void Update()
     {
         
@@ -33,22 +38,31 @@ public class GroundTile : MonoBehaviour
     
     void SpawnWall()
     {   
-        if(GroundSpawner.tileIndex % walldistance != 0 )return;
-
+        if(GroundSpawner.tileIndex % wallrandomdistance != 0 && GroundSpawner.tileIndex % wallHarddistance != 0)return;
+        if(GroundSpawner.FirstSpawntile - GroundSpawner.tileIndex >= 0)return;
         int bWallSpawnIndex = wallSPointList[Random.Range(0,wallSPointList.Count)];
-
-        foreach (int index in wallSPointList)
-        {
-            Transform spawnPoint = transform.GetChild(index).transform;
-            if (index == bWallSpawnIndex)
+        if(GroundSpawner.tileIndex % wallHarddistance == 0){
+            
+            foreach (int index in wallSPointList)
             {
-                // 壊れる壁をスポーン
-                Instantiate(BwallPrefab, spawnPoint.position,Quaternion.identity,transform);
+                Transform spawnPoint = transform.GetChild(index).transform;
+                if (index == bWallSpawnIndex)
+                {
+                    // 壊れる壁をスポーン
+                    Instantiate(BwallPrefab, spawnPoint.position,Quaternion.identity,transform);
+                }
+                else
+                {
+                    // 壊れない壁をスポーン
+                    Instantiate(wallPrefab, spawnPoint.position,Quaternion.identity,transform);
+                }
             }
-            else
-            {
-                // 壊れない壁をスポーン
+        }else if(GroundSpawner.tileIndex % wallrandomdistance == 0){
+            Transform spawnPoint = transform.GetChild(bWallSpawnIndex).transform;
+            if(GetRandomBoolean()){
                 Instantiate(wallPrefab, spawnPoint.position,Quaternion.identity,transform);
+            }else{
+                Instantiate(BwallPrefab, spawnPoint.position,Quaternion.identity,transform);
             }
         }
     }

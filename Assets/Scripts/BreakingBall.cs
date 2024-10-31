@@ -12,6 +12,7 @@ public class BreakingBall : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision collision) {
+        if (collision.gameObject.name == "BreakableWall(Clone)") return;//Wallのスコア加算用当たり判定に当たった場合は無視
         Destroy(gameObject);
     }
 

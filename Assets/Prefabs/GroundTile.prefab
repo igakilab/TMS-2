@@ -272,7 +272,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wallPrefab: {fileID: 6571105832579088937, guid: 0e3c0ad5a7f5037448975ac6ae6e736b, type: 3}
   BwallPrefab: {fileID: 3693977377284522254, guid: e96872b4f3b95274197ab4a834cc7ffb, type: 3}
-  walldistance: 3
+  wallHarddistance: 6
+  wallrandomdistance: 2
 --- !u!1 &8363287570468880588
 GameObject:
   m_ObjectHideFlags: 0
