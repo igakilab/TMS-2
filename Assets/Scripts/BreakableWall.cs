@@ -8,10 +8,10 @@ public class BreakableWall : Wall
     public int HP = 1; // 壁の耐久力
 
     private void Start() {
-        Debug.Log("score1:"+score);
-        score = HP+1;
-        Debug.Log("HP"+HP);
-        Debug.Log("score2"+score);
+        //Debug.Log("score1:"+score);
+        score = HP+2;
+        //Debug.Log("HP"+HP);
+       //Debug.Log("score2"+score);
     }
 
     private void Update() {  
@@ -25,7 +25,7 @@ public class BreakableWall : Wall
         if (collision.gameObject.name != "BrealingBall(clone)")
         {
             HP--;
-            Debug.Log("Wall HP: " + HP);
+            //Debug.Log("Wall HP: " + HP);
         }
         if (HP <= 0)
         {
