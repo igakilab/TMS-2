@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class CameraFollow : MonoBehaviour
 {
@@ -23,8 +24,10 @@ public class CameraFollow : MonoBehaviour
     }
 
     public void GameClear()
-    {
+    {   
+        PlayerMovement.Clear =true;
         Vector3 ClearPos = StartPos + new Vector3(0,0,-20);
+        transform.position = ClearPos;
         transform.rotation = Quaternion.Euler(0,180,0);
     }
 

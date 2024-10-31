@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
 {   
     public GameObject BreakingBallPrefab;
     public static Boolean Alive = true;
+    public static Boolean Clear = false;
     public Boolean DebugPlay = true;
     public float speed = 15;
 
@@ -27,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate(){
         if (!Alive) return;
+        if(Clear)return; 
         Vector3 forwardMove = transform.forward * speed * Time.fixedDeltaTime;
         rb.MovePosition(rb.position + forwardMove);
     }
