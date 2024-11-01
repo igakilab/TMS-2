@@ -8,12 +8,14 @@ public class PlayerMovement : MonoBehaviour
 {   
     public GameObject BreakingBallPrefab;
     public static Boolean Alive = true;
+    public static Boolean Clear = false;
     public Boolean DebugPlay = true;
     public float speed = 15;
 
     public UDPReceive udpReceive;
     public GameObject Player;
     CameraFollow cameraFollow;
+    UIManager uIManager;
     Rigidbody rb;
 
     private float rightx = 3.3f;
@@ -22,11 +24,13 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 BallSpawnPoint = new (0,0,1.5f);//Playerの位置にSpawnさせるとバグの原因になるので少し前方に
     void Start(){
         cameraFollow = FindObjectOfType<CameraFollow>();
+        uIManager = FindObjectOfType<UIManager>();
         rb = GetComponent<Rigidbody>();
     }
 
     void FixedUpdate(){
         if (!Alive) return;
+        if(Clear)return; 
         Vector3 forwardMove = transform.forward * speed * Time.fixedDeltaTime;
         rb.MovePosition(rb.position + forwardMove);
     }
@@ -67,6 +71,7 @@ public class PlayerMovement : MonoBehaviour
 
     void GameOver(){
         cameraFollow.GameOverScene();
+        uIManager.GameOverUI();
     }
 
     public void Die(){
