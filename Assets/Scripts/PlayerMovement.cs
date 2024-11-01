@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     public UDPReceive udpReceive;
     public GameObject Player;
     CameraFollow cameraFollow;
+    UIManager uIManager;
     Rigidbody rb;
 
     private float rightx = 3.3f;
@@ -23,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 BallSpawnPoint = new (0,0,1.5f);//Playerの位置にSpawnさせるとバグの原因になるので少し前方に
     void Start(){
         cameraFollow = FindObjectOfType<CameraFollow>();
+        uIManager = FindObjectOfType<UIManager>();
         rb = GetComponent<Rigidbody>();
     }
 
@@ -69,6 +71,7 @@ public class PlayerMovement : MonoBehaviour
 
     void GameOver(){
         cameraFollow.GameOverScene();
+        uIManager.GameOverUI();
     }
 
     public void Die(){

@@ -9,6 +9,7 @@ public class ScoreManager : MonoBehaviour
     public int clearScore = 100;
     public GameObject score_object = null;
     CameraFollow cameraFollow;
+    UIManager uIManager;
 
     public static void addScore(int getscore){
         totalScore = getscore + totalScore;
@@ -17,6 +18,7 @@ public class ScoreManager : MonoBehaviour
 
     private void Start() {
         cameraFollow = FindObjectOfType<CameraFollow>();
+        uIManager = FindObjectOfType<UIManager>();
     }
 
     private void Update() {
@@ -26,6 +28,7 @@ public class ScoreManager : MonoBehaviour
         score_text.text = "スコア:" + totalScore + "/" + clearScore;
         if(clearScore == totalScore){
             cameraFollow.GameClear();
+            uIManager.GameClearUI();
         }
     }
 }

@@ -14,7 +14,6 @@ public class CameraFollow : MonoBehaviour
         playerMovement = GameObject.FindObjectOfType<PlayerMovement>();
         offset = transform.position - player.position;
         StartPos = transform.position;
-        Time.timeScale = 0;
     }
 
     public void GameOverScene()
