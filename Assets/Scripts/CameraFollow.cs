@@ -6,6 +6,9 @@ using UnityEngine.SocialPlatforms.Impl;
 public class CameraFollow : MonoBehaviour
 {
     public Transform player;
+
+    public GameObject GameClearPanel;
+    public GameObject GameOverPanel;
     Vector3 offset;
     Vector3 StartPos;
     PlayerMovement playerMovement;
@@ -18,16 +21,13 @@ public class CameraFollow : MonoBehaviour
 
     public void GameOverScene()
     {
-        transform.position = StartPos;
-        transform.rotation = Quaternion.Euler(0,180,0);
+        GameOverPanel.SetActive(true);
     }
 
     public void GameClear()
     {   
         PlayerMovement.Clear =true;
-        Vector3 ClearPos = StartPos + new Vector3(0,0,-20);
-        transform.position = ClearPos;
-        transform.rotation = Quaternion.Euler(0,180,0);
+        GameClearPanel.SetActive(true);
     }
 
     void Update()
