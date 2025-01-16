@@ -9,7 +9,11 @@
 ![edit](picture/start.png)
 
 # 準備
-MediaPiteとUnityそれぞれで環境構築を行う
+githubのTMS-2リポジトリの中身をzipファイルにしてダウンロードする。
+![edit](picture/Download.png)
+
+------------------
+MediaPipeとUnityそれぞれで環境構築を行う
 ### MediaPipe
 Python環境を構築
 1. [VSCodeをインストール](https://code.visualstudio.com/download)
@@ -22,10 +26,12 @@ Python環境を構築
   pip install opencv-python
   pip install numpy
   ```
-4. tips
-- 一度仮想空間を作成したことがあるならば以下のディレクトリに存在するキャッシュを削除してからコードを実行することをお勧めします
-```
-C:\Users<ユーザー名>\AppData\Local\Temp\tfhub_modules\
+
+> [!TIP] 
+>一度仮想空間を作成したことがあるならば以下のディレクトリに存在するキャッシュを削除してから
+> コードを実行することをお勧めします
+>
+> C:\Users<ユーザー名>\AppData\Local\Temp\tfhub_modules\
 ```
 
 ### Unity
@@ -37,10 +43,12 @@ C:\Users<ユーザー名>\AppData\Local\Temp\tfhub_modules\
 # 実行方法
 ## VSCode側の操作
 - VSCodeでoperation.pyを開いて右上にある再生ボタンを押して実行する。
+  ![edit](picture/VSCode.png)
 - カメラが起動したらターミナル上でカメラのどこにいるか、ジャンプをしたかなどの判定が出ていたらOK
 
 ## Unity側の操作
 - Unityの以下の部分を押してゲームを再生する。
+  ![edit](picture/Unity1.png)
 - 再生が完了したら、ゲーム画面上のSTARTボタンにマウスカーソルを合わせクリック
    
 
