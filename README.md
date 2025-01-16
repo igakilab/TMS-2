@@ -10,5 +10,5 @@
 
 ![edit](picture/start.png)
 
-#準備
+# 準備
 MediaPipeとUnityを用いて作成する
