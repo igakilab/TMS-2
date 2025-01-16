@@ -9,3 +9,6 @@
 壁を避けて破壊して得点を稼ぎ、制限時間内にハイスコアを目指そう！​
 
 ![edit](picture/start.png)
+
+#準備
+MediaPipeとUnityを用いて作成する
