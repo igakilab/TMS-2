@@ -32,7 +32,6 @@ Python環境を構築
 > コードを実行することをお勧めします
 >
 > C:\Users<ユーザー名>\AppData\Local\Temp\tfhub_modules\
-```
 
 ### Unity
 1.[Unityをインストール](https://unity.com/ja/releases/editor/whats-new/2022.3.10)
@@ -50,7 +49,10 @@ Python環境を構築
 - Unityの以下の部分を押してゲームを再生する。
   ![edit](picture/Unity1.png)
 - 再生が完了したら、ゲーム画面上のSTARTボタンにマウスカーソルを合わせクリック
-   
+
+> [!CAUTION]
+> Playerの欄のDebug Playのチェックを外してください。チェックをつけたままだとカメラの読み込みでのキャラ操作ができません。
+> チェックをつけると矢印キーとスペースキーで操作することが可能です。
 
 # 遊び方
 - 迫り来る壁を避ける
