@@ -7,6 +7,7 @@ public class TimeManager : MonoBehaviour
 {
     public GameObject timeLimit_object = null; // Textオブジェクト
     public static int timeLimit = 90;
+    public GameObject scorePanel;
     float remainingTime;
     CameraFollow cameraFollow;
     UIManager uIManager;
@@ -28,6 +29,7 @@ public class TimeManager : MonoBehaviour
         if( remainingTime <= 0 ){
             cameraFollow.GameClear();
             uIManager.GameClearUI();
+            scorePanel.transform.position = new Vector3(0, 0,0);
         }
     }
 }
