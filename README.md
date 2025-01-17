@@ -34,7 +34,9 @@ Python環境を構築
 > C:\Users<ユーザー名>\AppData\Local\Temp\tfhub_modules\
 
 ### Unity
-1.[Unityをインストール](https://unity.com/ja/releases/editor/whats-new/2022.3.10)
+1.[Unity Hubをインストール](https://unity.com/ja/download)
+
+2.[Unityをインストール](https://unity.com/ja/releases/editor/whats-new/2022.3.10)
 
 
 
