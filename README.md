@@ -9,8 +9,15 @@
 ![edit](picture/start.png)
 
 # 準備
-githubのTMS-2リポジトリの中身をzipファイルにしてダウンロードする。
+1.githubのTMS-2リポジトリの中身をzipファイルにしてダウンロードする。
 ![edit](picture/Download.png)
+
+2.[ImagesとMaterialsをダウンロード](https://oskit-my.sharepoint.com/personal/hiroshi_igaki_oit_ac_jp/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fhiroshi%5Figaki%5Foit%5Fac%5Fjp%2FDocuments%2FIgakiLabDir%2Fkitayamasai%2F2024%2F%E9%89%84%E3%81%AE%E3%81%A9%E3%82%93%E3%81%90%E3%82%8A&ga=1)
+![edit](picture/OneDrive.png)
+
+3.任意の場所に先ほどダウンロードしたTMS-2-mainファイルをすべて解凍し、解凍したTMS-2-mainを開きます。
+
+4.TMS-2-mainを開けたら、AssetsのImagesとMaterialsにさっきダウンロードしたImagesとMaterialsのファイルの中身を入れ込む
 
 ------------------
 MediaPipeとUnityそれぞれで環境構築を行う
@@ -38,8 +45,8 @@ Python環境を構築
 
 2.[Unityをインストール](https://unity.com/ja/releases/editor/whats-new/2022.3.10)
 
-
-
+2.インストールしたUnityHubで追加ボタンからディスクから加えるをクリック
+![edit](picture/UnityHub.png)
 
 # 実行方法
 ## VSCode側の操作
@@ -48,16 +55,22 @@ Python環境を構築
 - カメラが起動したらターミナル上でカメラのどこにいるか、ジャンプをしたかなどの判定が出ていたらOK
 
 ## Unity側の操作
-- 以下のスタートボタンが出てくるまでゲーム画面のサイズを変えてみる
+- 以下のスタートボタンが出てくるまでゲーム画面変えてみる
 ![edit](picture/StartBo.png)
 
 - Unityの以下の部分を押してゲームを再生する。
   ![edit](picture/Unity1.png)
 - 再生が完了したら、ゲーム画面上のSTARTボタンにマウスカーソルを合わせクリック
 
+
 > [!CAUTION]
 > Playerの欄のDebug Playのチェックを外してください。チェックをつけたままだとカメラの読み込みでのキャラ操作ができません。
 > チェックをつけると矢印キーとスペースキーで操作することが可能です。
+> ![edit](picture/PlayerDebug.png)
+
+- Unityの以下の部分を押してゲームを再生する。
+  ![edit](picture/Unity1.png)
+- 再生が完了したら、ゲーム画面上のSTARTボタンにマウスカーソルを合わせクリック
 
 # 遊び方
 - 迫り来る壁を避ける
